@@ -1,0 +1,131 @@
+\usepackage{amsmath, amsfonts, amssymb, mathtools}
+
+
+% -------------------------------------
+% --------- Operator Fonts ----------- 
+\iffalse
+\usepackage[bb=boondox]{mathalfa}
+
+
+\usepackage{xparse}
+\DeclareFontFamily{U}{ntxmia}{}
+\DeclareFontShape{U}{ntxmia}{m}{it}{<-> ntxmia }{}
+\DeclareFontShape{U}{ntxmia}{b}{it}{<-> ntxbmia }{}
+\DeclareSymbolFont{lettersA}{U}{ntxmia}{m}{it}
+\SetSymbolFont{lettersA}{bold}{U}{ntxmia}{b}{it}
+\ExplSyntaxOn
+\NewDocumentCommand{\varmathbb}{m}
+ {
+  \tl_map_inline:nn { #1 }
+   {
+    \use:c { varbb##1 }
+   }
+ }
+\tl_map_inline:nn { ABCDEFGHIJKLMNOPQRSTUVWXYZ }
+ {
+  \exp_args:Nc \DeclareMathSymbol{varbb#1}{\mathord}{lettersA}{\int_eval:n { `#1+67 }}
+ }
+\exp_args:Nc \DeclareMathSymbol{varbbk}{\mathord}{lettersA}{169}
+\ExplSyntaxOff
+%%
+\makeatletter
+\DeclareFontFamily{U}{tipa}{}
+\DeclareFontShape{U}{tipa}{m}{n}{<->tipa10}{}
+\newcommand{\arc@char}{{\usefont{U}{tipa}{m}{n}\symbol{62}}}%
+
+\newcommand{\arc}[1]{\mathpalette\arc@arc{#1}}
+
+\newcommand{\arc@arc}[2]{%
+  \sbox0{$\m@th#1#2$}%
+  \vbox{
+    \hbox{\resizebox{\wd0}{\height}{\arc@char}}
+    \nointerlineskip
+    \box0
+  }%
+}
+\makeatother
+\newcommand{\opA}{{\varmathbb{A}}}
+\newcommand{\opB}{{\varmathbb{B}}}
+\newcommand{\opC}{{\varmathbb{C}}}
+\newcommand{\opD}{{\varmathbb{D}}}
+\newcommand{\opE}{{\varmathbb{E}}}
+\newcommand{\opF}{{\varmathbb{F}}}
+\newcommand{\opG}{{\varmathbb{G}}}
+\newcommand{\opH}{{\varmathbb{H}}}
+\newcommand{\opI}{{\varmathbb{I}}}
+\newcommand{\opJ}{{\varmathbb{J}}}
+\newcommand{\opK}{{\varmathbb{K}}}
+\newcommand{\opL}{{\varmathbb{L}}}
+\newcommand{\opM}{{\varmathbb{M}}}
+\newcommand{\opN}{{\varmathbb{N}}}
+\newcommand{\opO}{{\varmathbb{O}}}
+\newcommand{\opP}{{\varmathbb{P}}}
+\newcommand{\opQ}{{\varmathbb{Q}}}
+\newcommand{\opR}{{\varmathbb{R}}}
+\newcommand{\opS}{{\varmathbb{S}}}
+\newcommand{\opT}{{\varmathbb{T}}}
+\newcommand{\opU}{{\varmathbb{U}}}
+\newcommand{\opV}{{\varmathbb{V}}}
+\newcommand{\opW}{{\varmathbb{W}}}
+\newcommand{\opX}{{\varmathbb{X}}}
+\newcommand{\opY}{{\varmathbb{Y}}}
+\newcommand{\opZ}{{\varmathbb{Z}}}
+\newcommand{\opZer}{\mathbb{0}}
+%--------------------------------------
+\fi
+
+% -------------------------------------
+
+
+
+
+
+
+
+% ------ Math Operators ------
+% Blackboard bold
+\renewcommand{\AA}{\mathbb A}
+\newcommand{\CC}{\mathbb C}
+\newcommand{\DD}{\mathbb D}
+\newcommand{\EE}{\mathbb E}
+\newcommand{\FF}{\mathbb F}
+\newcommand{\HH}{\mathbb H}
+\newcommand{\KK}{\mathbb K}
+\newcommand{\NN}{\mathbb N}
+\newcommand{\PP}{\mathbb P}
+\newcommand{\QQ}{\mathbb Q}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\ZZ}{\mathbb Z}
+
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\parsh}[3]{\left(\frac{\partial #1}{\partial #2}\right)_{#3}}
+
+% various math expressions that shouldn't be italicized 
+\DeclareMathOperator{\cis}{cis}
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator*{\lcm}{lcm}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Bin}{Bin}
+\DeclareMathOperator{\res}{res}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Sing}{Sing}
+\DeclareMathOperator{\ob}{ob}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Top}{Top}
+\DeclareMathOperator{\chAb}{chAb}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator*{\sign}{sign}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\minimize}{minimize}
+\DeclareMathOperator*{\maximize}{maximize}
+\DeclareMathOperator*{\expectation}{\mathbb{E}}
+\DeclareMathOperator*{\variation}{\mathrm{Var}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+

@@ -1,0 +1,170 @@
+% ------ Basic packages -------
+\usepackage{sectsty}
+\chapternumberfont{\Large} 
+\chaptertitlefont{\huge}
+\usepackage{amsmath}
+\usepackage{amssymb}
+ \usepackage{mathtools}
+ \usepackage[amsthm, thmmarks,amsmath]{ntheorem}
+\usepackage{geometry}
+\geometry{left=3cm,right=3cm,top=3.4cm,bottom=3.4cm}
+\usepackage{kotex} 
+\usepackage{stmaryrd}
+\usepackage[hyphens,spaces,obeyspaces]{url}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+% \usepackage[sectionbib]{chapterbib}
+\usepackage[sectionbib]{natbib}
+\usepackage{chapterbib}
+\usepackage[nottoc]{tocbibind}
+\usepackage{lipsum}
+\usepackage{fancyhdr,lastpage}
+\usepackage{paralist}
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{color}
+\setcounter{chapter}{1}
+\usepackage{authblk}
+
+
+
+% ------ Version Controler ------
+\usepackage{version}
+\includeversion{solution}
+
+
+
+
+
+
+% ----- Listings Related Things -----
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset { %
+    %language=python,
+    backgroundcolor=\color{black!5}, % set backgroundcolor
+    %basicstyle=\ttfamily,
+    basicstyle= \sffamily,
+    %commentstyle=\ttfamily,
+    commentstyle = \sffamily, 
+    showstringspaces=false
+}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{patterns}
+\makeatletter
+\newcommand{\pgfplotsdrawaxis}{\pgfplots@draw@axis}
+\makeatother
+\pgfplotsset{only axis on top/.style={axis on top=false, after end axis/.code={
+             \pgfplotsset{axis line style=opaque, ticklabel style=opaque, tick style=opaque,
+             grid=none
+             }\pgfplotsdrawaxis}
+}}
+\newcommand{\drawge}{-- (rel axis cs:1,0) -- (rel axis cs:1,1) -- (rel axis cs:0,1) \closedcycle}
+\newcommand{\drawle}{-- (rel axis cs:1,1) -- (rel axis cs:1,0) -- (rel axis cs:0,0) \closedcycle}
+
+
+\setlength{\parindent}{0in}
+
+
+
+% ----- Styles ----- 
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows,arrows.meta}
+% make a larger hook
+% https://tex.stackexchange.com/questions/514451/how-to-define-a-new-hooked-arrow
+\makeatletter
+\pgfdeclarearrow{
+  name=xGlyph,
+  cache=false,
+  bending mode=none,
+  parameters={\tikzcd@glyph@len,\tikzcd@glyph@shorten},
+  setup code={%
+    \pgfarrowssettipend{\tikzcd@glyph@len\advance\pgf@x by\tikzcd@glyph@shorten}},
+  defaults={
+    glyph axis=axis_height,
+    glyph length=+1.55ex,
+    glyph shorten=+-0.1ex},
+  drawing code={%
+    \pgfpathrectangle{\pgfpoint{+0pt}{+-1.5ex}}{\pgfpoint{+\tikzcd@glyph@len}{+3ex}}%
+    \pgfusepathqclip%
+    \pgftransformxshift{+\tikzcd@glyph@len}%
+    \pgftransformyshift{+-\tikzcd@glyph@axis}%
+    \pgftext[right,base]{\tikzcd@glyph}}}
+\makeatother
+\tikzcdset{
+	arrow style=tikz,
+	diagrams={>={Latex}},
+	tikzcd left hook/.tip={xGlyph[glyph math command=supset, swap, glyph axis = 5.7pt]},
+	tikzcd right hook/.tip={xGlyph[glyph math command=supset, glyph axis = 5.7pt]}
+}
+
+
+
+
+% ----- Theorems ------- 
+\usepackage{thmtools}
+\usepackage[framemethod = TikZ]{mdframed}
+
+
+
+% ---- Problem counter ----
+\newcounter{pbctr}[chapter]
+\setcounter{pbctr}{0}
+
+
+
+\mdfdefinestyle{mdblackbox}{%
+	skipabove=8pt,
+	linewidth=3pt,
+	rightline=false,
+	leftline=true,
+	topline=false,
+	bottomline=false,
+	linecolor=black,
+	backgroundcolor=RedViolet!5!gray!5,
+}
+\declaretheoremstyle[
+	headfont=\bfseries,
+	bodyfont=\normalfont\small,
+	spaceabove=0pt,
+	spacebelow=0pt,
+	mdframed={style=mdblackbox}
+]{thmblackbox}
+
+
+\declaretheorem[%
+style=thmblackbox, name=Theorem, numberwithin=section]{theorem}
+\declaretheorem[%
+style=thmblackbox, name=Lemma, sibling = theorem]{lemma}
+\declaretheorem[%
+style=thmblackbox, name=Corollary, sibling = theorem]{corollary}
+\declaretheorem[%
+style=thmblackbox, name=Proposition, sibling = theorem]{proposition}
+\declaretheorem[%
+style=thmblackbox, name=Example, sibling = theorem]{example}
+
+
+
+\mdfdefinestyle{mdgreenbox}{%
+	skipabove=8pt,
+	linewidth=3pt,
+	rightline=false,
+	leftline=true,
+	topline=false,
+	bottomline=false,
+	linecolor=black,
+	backgroundcolor=ForestGreen!3!
+}
+\declaretheoremstyle[
+	headfont=\bfseries,
+	bodyfont=\normalfont\small,
+	spaceabove=0pt,
+	spacebelow=0pt,
+	mdframed={style=mdgreenbox}
+]{exercisegreenbox}
+
+
+\declaretheorem[%
+style=exercisegreenbox, name=Exercise, numberwithin=chapter]{exercise}

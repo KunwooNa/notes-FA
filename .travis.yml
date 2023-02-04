@@ -24,25 +24,25 @@ before_script:
     - mkdir asy
 
 script:
-    - pdflatex -interaction=batchmode Napkin.tex
-    - asy -nosafe -o asy/ asy/Napkin-*.asy -v
+    - pdflatex -interaction=batchmode notes-on-FA.tex
+    - asy -nosafe -o asy/ asy/notes-on-FA-*.asy -v
     - biber Napkin
-    - pdflatex -interaction=batchmode Napkin.tex
-    - pdflatex -interaction=batchmode Napkin.tex
-    - pdflatex -interaction=batchmode Napkin.tex
-    - pdflatex -interaction=batchmode Napkin.tex
+    - pdflatex -interaction=batchmode notes-on-FA.tex
+    - pdflatex -interaction=batchmode notes-on-FA.tex
+    - pdflatex -interaction=batchmode notes-on-FA.tex
+    - pdflatex -interaction=batchmode notes-on-FA.tex
     # ...
     # latexmk -pdf -halt-on-error -quiet -interaction=batchmode
 
 before_deploy:
     - mkdir dist
-    - mv Napkin.pdf dist/
-    - mv Napkin.log dist/
+    - mv notes-on-FA.pdf dist/
+    - mv notes-on-FA.log dist/
     - mkdir dist/asy/
     - mv asy/*.pdf dist/asy/
     - cd dist/
     - ls
-    - tree -H '.' -I "index.html" -D --charset utf-8 -T "An Infinitely Large Napkin" > index.html
+    - tree -H '.' -I "index.html" -D --charset utf-8 -T "notes-on-FA" > index.html
 
 deploy:
     provider: pages

@@ -1,3 +1,4 @@
+# auto comiled tex things 
 notes-on-FA.aux
 notes-on-FA.fdb_latexmk
 notes-on-FA.fls
@@ -5,3 +6,7 @@ notes-on-FA.log
 notes-on-FA.synctex.gz
 notes-on-FA.thm
 notes-on-FA.toc
+
+# personal token 
+token
+
